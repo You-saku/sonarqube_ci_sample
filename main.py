@@ -18,6 +18,7 @@ from urllib.parse import urlparse
 SECRET_KEY = os.environ.get("SECRET_KEY", "default_secret_key")
 DATABASE_PASSWORD = os.environ.get("DATABASE_PASSWORD", "default_password")
 API_TOKEN = os.environ.get("API_TOKEN", "default_token")
+PASSWORD = os.environ.get("PASSWORD", "default_password")
 
 # 安全なデータベースクエリ: パラメータ化クエリを使用
 def safe_database_query(user_id):
@@ -174,8 +175,7 @@ def main():
     filename = "../../../etc/passwd"  # パストラバーサル攻撃
     file_content = unsafe_file_access(filename)
     
-    password = "123"  # 弱いパスワード
-    hashed = weak_hash_function(password)
+    hashed = weak_hash_function(PASSWORD)
     
     token = generate_weak_token()
     print(f"生成されたトークン: {token}")
